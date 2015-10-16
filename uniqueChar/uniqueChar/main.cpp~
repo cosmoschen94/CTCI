@@ -11,7 +11,6 @@ using namespace std;
 
 
 /*
- CTCI 1.1
  This problem test our knowledge of ASCII code and Unicode,
  array and bit manipulation. The solution that uses least space
  is to do bit manipulation.
