@@ -6,6 +6,23 @@
 //  Copyright © 2015 Siyu Chen. All rights reserved.
 //
 
+/*
+    1.3 check permutation between two strings
+    
+    Key question: whether the permutation comparison
+    is case sensitive and if white space is significant.
+    
+    Key point:
+
+    1. pre-increment is prefered comparing to post-increment 
+    when i is a instance of a C++ class.
+    2. dynamic 2D array is essantially an array of pointers 
+    to arrays
+    3. deallocation to prevent memory leak
+ 
+*/
+
+
 #include <iostream>
 using namespace std;
 
@@ -27,7 +44,7 @@ bool perm(string a, string b)
     p = new int*[256];
     for (int i=0; i<256; ++i)
     {
-        p[i] = new int[2];
+        p[i] = new int[2]();
     }
     
     // count char for each string
@@ -35,19 +52,19 @@ bool perm(string a, string b)
     {
         int va = a[i];
         int vb = b[i];
-        cout << va << "\t" << vb << "\n";
+        //cout << va << "\t" << vb << "\n";
         p[va][0] += 1;
         p[vb][1] += 1;
     }
     
     
-    cout << "Seperation======================" << "\n";
+    //cout << "Seperation======================" << "\n";
     
     // compare count
     for (int i = 0; i<256; ++i)
     {
-        cout << p[i][0] << "\t" << p[i][1];
-        cout << "\n";
+        //cout << p[i][0] << "\t" << p[i][1];
+        //cout << "\n";
         if(p[i][0]!=p[i][1]){return false;}
     }
     
@@ -60,52 +77,12 @@ bool perm(string a, string b)
     
     return true;
     
-    /*
-    int * hash;
-    hash = new int[256]{0};
-    //hash[256]={false};
-
-    for (int i=0; i < a.length(); i++)
-    {
-        int value = a[i];
-        if (hash[value] == 0)
-        {
-            hash[value] += 2;
-        }
-        else if (hash[value] > 0)
-        {
-            hash[value] += 1;
-        }
-    }
-    
-    for (int i=0; i < b.length(); i++)
-    {
-        int value = b[i];
-        
-        //cout << hash[value] << "\n";
-        
-        if (hash[value] == 0)
-        {
-            return false;
-        }
-        hash[value] -= 1;
-    }
-    
-    for (int i=0; i < b.length(); i++)
-    {
-        int value = b[i];
-        if(hash[value] > 1)
-        {
-            return false;
-        }
-    }
-        */
 }
 
 int main(int argc, const char * argv[]) {
     
-    string a = "abcdad";
-    string b = "bddaada";
+    string a = "abcDa  d";
+    string b = "abcdad  ";
     bool test = perm(a,b);
     cout << test << "\n";
     
