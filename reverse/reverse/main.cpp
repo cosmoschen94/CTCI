@@ -57,9 +57,11 @@ void reverse(char * str)
 
 int main(int argc, const char * argv[]) {
     
-    char * str = "hello";
+    char * str;
+    char s [] ="soccer";
+    str = s;
     reverse(str);
-    cout << str;
+    cout << str << "\n";
     
     
 }
