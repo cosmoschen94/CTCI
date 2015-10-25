@@ -67,7 +67,8 @@ void incre(node *&current)
 
 node *tail(node *&head)
 {
-    node *temp = head;
+    node *temp = new node;
+    temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
@@ -81,7 +82,7 @@ string compress(string str)
     p = new node*[58];
     for (int i=0; i < 58; ++i)
     {
-        p[i] = NULL;
+        p[i]->next = NULL;
     }
     
     unsigned long size = str.length();
@@ -150,7 +151,8 @@ string compress(string str)
 
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+    
+    string a = "aabcccccaaa";
+    string b = compress(a);
+    cout << b << endl;
 }
